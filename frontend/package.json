@@ -1,0 +1,22 @@
+{
+  "name": "graduate-design-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node tests/chat-state.test.js && node tests/chat-scroll.test.js && node tests/stream-chat-request.test.js && node tests/sidebar-state.test.js && node tests/tool-status.test.js && node tests/message-element.test.js && node tests/tool-suggestion.test.js && node tests/server-routing.test.js && node tests/theme-state.test.js && node tests/vite-config.test.js && node tests/auth-session.test.js && node tests/use-on-click-outside.test.js && node tests/app-layout-context.test.js && node tests/request-json-401.test.js && node tests/home-dashboard.test.js && node tests/admin-page.test.js"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.14.1",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^5.4.10"
+  }
+}

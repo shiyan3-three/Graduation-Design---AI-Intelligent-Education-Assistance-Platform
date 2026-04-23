@@ -1,0 +1,35 @@
+# Local secrets and environment overrides
+.env
+*.env
+!*.env.example
+backend/.env
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Node / frontend build output
+frontend/node_modules/
+frontend/dist/
+
+# Runtime databases and generated review/test artifacts
+*.db
+*.db-journal
+*.log
+backend/tools/*_log.txt
+project-scipt/logs/
+project-scipt/runtime/
+review_tmp/
+review_tmp2/
+.tmp/
+tmp*/
+
+# Editor and OS metadata
+.agents/
+.claude/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

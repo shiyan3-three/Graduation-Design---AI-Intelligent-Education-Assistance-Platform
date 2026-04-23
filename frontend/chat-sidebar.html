@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智能辅导对话页</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <aside class="history-panel" aria-label="历史会话侧栏">
+          <div class="history-panel__header">
+            <p class="eyebrow">Conversation History</p>
+            <h2>历史会话</h2>
+            <p id="session-status" class="session-status" aria-live="polite">加载历史会话中...</p>
+          </div>
+          <ul id="session-list" class="session-list" aria-label="历史会话列表"></ul>
+        </aside>
+
+        <section class="panel">
+          <header class="hero">
+            <p class="eyebrow">AI Intelligent Education Tutor</p>
+            <h1>最小对话联调页</h1>
+            <p class="intro">
+              当前页面用于验证前端与
+              <code>GET /api/sessions</code>
+              、
+              <code>GET /api/sessions/:id</code>
+              以及
+              <code>POST /api/chat</code>
+              的最小闭环。
+            </p>
+          </header>
+
+          <section class="chat-card" aria-label="对话区域">
+            <div class="chat-toolbar">
+              <p id="session-hint" class="session-hint" aria-live="polite">准备开启新会话</p>
+              <p id="error-banner" class="error-banner" hidden aria-live="assertive"></p>
+            </div>
+
+            <div class="chat-stream">
+              <p id="empty-state" class="empty-state">
+                发送第一条消息后，这里会显示当前会话的消息内容；点击左侧历史会话，可切换查看旧消息。
+              </p>
+              <ul id="message-list" class="message-list" aria-live="polite"></ul>
+            </div>
+
+            <form id="chat-form" class="composer">
+              <label class="sr-only" for="message-input">输入消息</label>
+              <input
+                id="message-input"
+                name="message"
+                type="text"
+                placeholder="输入你想提问的内容，例如：请解释导数的几何意义"
+                autocomplete="off"
+              />
+              <button id="send-button" type="submit">发送</button>
+            </form>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

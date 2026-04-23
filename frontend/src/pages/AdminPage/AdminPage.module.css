@@ -1,0 +1,534 @@
+.adminShell {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    color: var(--dashboard-text-main, var(--text-main));
+}
+
+.topBar {
+    background: var(--dashboard-card, var(--bg-panel));
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 18px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--dashboard-shadow-dropdown, var(--shadow-sm));
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    color: var(--dashboard-primary, var(--primary));
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.topBar h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.backButton,
+.addButton,
+.primaryAction,
+.dangerAction,
+.successAction,
+.ghostAction,
+.statusBar button,
+.confirmRow button {
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 7px 13px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.16s ease;
+}
+
+.backButton,
+.ghostAction,
+.confirmRow button {
+    background: transparent;
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    border-color: var(--dashboard-border, var(--border-color));
+}
+
+.backButton:hover,
+.ghostAction:hover,
+.confirmRow button:hover {
+    color: var(--dashboard-text-main, var(--text-main));
+    border-color: var(--dashboard-primary, var(--primary));
+}
+
+.adminLayout {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 620px;
+}
+
+.sidebar {
+    background: var(--dashboard-card, var(--bg-panel));
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 18px;
+    padding: 12px;
+    align-self: start;
+    position: sticky;
+    top: 84px;
+}
+
+.tabButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 0;
+    border-left: 3px solid transparent;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    font-weight: 700;
+    text-align: left;
+}
+
+.tabButton:hover {
+    background: var(--dashboard-primary-bg, var(--primary-soft));
+    color: var(--dashboard-primary, var(--primary));
+    border-left-color: transparent;
+}
+
+.tabButton.active {
+    background: var(--dashboard-primary, var(--primary));
+    color: #ffffff;
+    border-left: none;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.contentPanel {
+    background: var(--dashboard-card, var(--bg-panel));
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 18px;
+    padding: 24px;
+    overflow: hidden;
+}
+
+.statusBar {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--dashboard-primary-bg, var(--primary-soft));
+    color: var(--dashboard-primary, var(--primary));
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.sectionTitle {
+    margin: 0 0 18px;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sectionHeader .sectionTitle {
+    margin-bottom: 0;
+}
+
+.sectionTitle::before {
+    content: '';
+    width: 4px;
+    height: 19px;
+    background: var(--dashboard-primary, var(--primary));
+    border-radius: 2px;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.statCard {
+    background: var(--dashboard-bg, var(--bg-global));
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.statCard span {
+    display: block;
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.statCard strong {
+    color: var(--dashboard-primary, var(--primary));
+    font-size: 34px;
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.toolbar input,
+.inlineEditRow input,
+.inlineEditRow textarea {
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 10px;
+    background: var(--dashboard-bg, var(--bg-global));
+    color: var(--dashboard-text-main, var(--text-main));
+    padding: 9px 11px;
+    width: 100%;
+}
+
+.toolbar input {
+    max-width: 220px;
+}
+
+.tableWrap {
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 16px;
+    overflow: auto;
+}
+
+.tableWrap table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.tableWrap th {
+    background: var(--dashboard-bg, var(--bg-global));
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    text-align: left;
+    padding: 12px 14px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.tableWrap td {
+    padding: 14px 16px;
+    border-top: 1px solid var(--dashboard-border, var(--border-color));
+    vertical-align: middle;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.adminBadge {
+    background: var(--dashboard-primary-bg, var(--primary-soft));
+    color: var(--dashboard-primary, var(--primary));
+}
+
+.userBadge {
+    background: var(--dashboard-border, var(--border-color));
+    color: var(--dashboard-text-muted, var(--text-subtle));
+}
+
+.actions,
+.inlineActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.primaryAction,
+.addButton {
+    background: var(--dashboard-primary-bg, var(--primary-soft));
+    color: var(--dashboard-primary, var(--primary));
+    border-color: var(--dashboard-primary, var(--primary));
+}
+
+.primaryAction:hover,
+.addButton:hover {
+    background: var(--dashboard-primary, var(--primary));
+    color: #fff;
+}
+
+.dangerAction {
+    background: var(--dashboard-danger-bg, var(--error-bg));
+    color: var(--dashboard-danger, var(--error));
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.dangerAction:hover {
+    background: var(--dashboard-danger, var(--error));
+    color: #fff;
+}
+
+.successAction {
+    background: var(--dashboard-success-bg, var(--success-bg));
+    color: var(--dashboard-success, var(--success));
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.successAction:hover {
+    background: var(--dashboard-success, var(--success));
+    color: #fff;
+}
+
+.primaryAction:disabled,
+.dangerAction:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.confirmRow td {
+    background: var(--dashboard-danger-bg, var(--error-bg));
+}
+
+.confirmRow td>span {
+    color: var(--dashboard-danger, var(--error));
+    font-weight: 700;
+    margin-right: 12px;
+}
+
+.inlineEditRow td {
+    background: var(--dashboard-primary-bg, var(--primary-soft));
+}
+
+.inlineEditRow textarea {
+    display: block;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.addGrid,
+.editGrid {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.addGrid {
+    grid-template-columns: 1fr 1fr 90px;
+}
+
+.editGrid {
+    grid-template-columns: minmax(0, 1fr) 90px;
+}
+
+.questionPreview {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.cellText {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.questionsTable {
+    table-layout: fixed;
+}
+
+.answerCell {
+    text-align: center;
+}
+
+.emptyCell {
+    text-align: center;
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    padding: 28px !important;
+}
+
+.overviewGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.overviewSection {
+    background: var(--dashboard-bg, var(--bg-global));
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 14px;
+    padding: 18px 20px;
+}
+
+.subSectionTitle {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.distributionTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.distributionTable th {
+    text-align: left;
+    padding: 6px 10px;
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--dashboard-border, var(--border-color));
+}
+
+.distributionTable td {
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--dashboard-border, var(--border-color));
+    color: var(--dashboard-text-main, var(--text-main));
+}
+
+.distributionTable tr:last-child td {
+    border-bottom: none;
+}
+
+.recentUsersList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recentUserItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 12px;
+    border-radius: 8px;
+    background: var(--dashboard-card, var(--bg-panel));
+    border: 1px solid var(--dashboard-border, var(--border-color));
+}
+
+.recentUserName {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--dashboard-text-main, var(--text-main));
+}
+
+.recentUserTime {
+    font-size: 12px;
+    color: var(--dashboard-text-muted, var(--text-subtle));
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.pageBtn {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--dashboard-border, var(--border-color));
+    border-radius: 8px;
+    background: var(--dashboard-card, var(--bg-panel));
+    color: var(--dashboard-text-main, var(--text-main));
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.pageBtn:hover:not(:disabled) {
+    border-color: var(--dashboard-primary, var(--primary));
+    color: var(--dashboard-primary, var(--primary));
+}
+
+.pageBtn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.pageActive {
+    background: var(--dashboard-primary, var(--primary));
+    color: #ffffff;
+    border-color: var(--dashboard-primary, var(--primary));
+}
+
+.pageActive:hover {
+    background: var(--dashboard-primary, var(--primary));
+    color: #ffffff;
+}
+
+.pageEllipsis {
+    color: var(--dashboard-text-muted, var(--text-subtle));
+    padding: 0 4px;
+    font-size: 14px;
+    line-height: 36px;
+}
+
+@media (max-width: 900px) {
+    .adminLayout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .statsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .overviewGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .topBar,
+    .sectionHeader,
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .sidebar,
+    .statsGrid,
+    .addGrid,
+    .editGrid {
+        grid-template-columns: 1fr;
+    }
+    .toolbar input {
+        max-width: none;
+    }
+}

@@ -540,13 +540,15 @@ async def _call_openai_compatible_api_with_provider(
             tool_calls = message.get("tool_calls")
 
             if isinstance(tool_calls, list) and tool_calls:
-                messages.append(
-                    {
-                        "role": "assistant",
-                        "content": message.get("content") or "",
-                        "tool_calls": tool_calls,
-                    }
-                )
+                assistant_msg = {
+                    'role': 'assistant',
+                    'content': message.get('content') or '',
+                    'tool_calls': tool_calls,
+                }
+                reasoning = message.get('reasoning_content')
+                if reasoning:
+                    assistant_msg['reasoning_content'] = reasoning
+                messages.append(assistant_msg)
                 for tool_call in tool_calls:
                     tool_output, tool_record = await _execute_tool_call(tool_call)
                     tools_used.append(tool_record)
@@ -588,6 +590,7 @@ async def _call_openai_compatible_api_stream_with_provider(
                 "tool_choice": "auto",
             }
             content_parts: List[str] = []
+            reasoning_parts: List[str] = []
             tool_call_buffers: Dict[int, Dict[str, Any]] = {}
 
             async with client.stream("POST", url, json=payload, headers=headers) as response:
@@ -611,17 +614,22 @@ async def _call_openai_compatible_api_stream_with_provider(
                         content_parts.append(content)
                         yield {'type': 'delta', 'content': content}
 
+                    reasoning = delta.get('reasoning_content')
+                    if reasoning:
+                        reasoning_parts.append(reasoning)
+
                     _accumulate_tool_call_deltas(tool_call_buffers, delta.get('tool_calls'))
 
             tool_calls = _build_tool_calls_from_stream_buffers(tool_call_buffers)
             if tool_calls:
-                messages.append(
-                    {
-                        "role": "assistant",
-                        "content": ''.join(content_parts),
-                        "tool_calls": tool_calls,
-                    }
-                )
+                assistant_msg = {
+                    'role': 'assistant',
+                    'content': ''.join(content_parts),
+                    'tool_calls': tool_calls,
+                }
+                if reasoning_parts:
+                    assistant_msg['reasoning_content'] = ''.join(reasoning_parts)
+                messages.append(assistant_msg)
                 for tool_call in tool_calls:
                     tool_output, tool_record = await _execute_tool_call(tool_call)
                     tools_used.append(tool_record)
